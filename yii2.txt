@@ -1,0 +1,77 @@
+2619468069
+vishalp123456
+jenking
+NO_ENGINE_SUBSTITUTION
+
+,NO_ENGINE_SUBSTITUTION
+
+https://phppot.com/jquery/jquery-dependent-dropdown-list-countries-and-states/
+
+pjax
+gii
+crud
+fileupload
+active record
+grid view
+
+ALTER TABLE `media` ADD FOREIGN KEY (`worker_id`) REFERENCES `worker`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+php init->0->yes->
+
+ git pull origin development
+
+ realpath,PATHINFO
+ 
+zent
+adminlte
+http://www.bsourcecode.com/yiiframework2/select-query-sql-queries/
+https://www.getpostman.com/collections/bf1929afc21d8a201196
+https://yii2-framework.readthedocs.io/en/stable/guide/input-forms/
+
+$connection = Yii::$app->getDb();
+$command = $connection->createCommand('<query>');
+$res=$command->execute();
+$res=$command->queryAll();
+
+
+->createCommand()->rawsql   for show exicuted command
+/*********************FOR DROPDOWN DISPLAY****************************/
+
+$ar=CostCentreSub::find()->select(['id','name as text'])->asArray()->all();//return result as array format
+/**********//
+use yii\helpers\ArrayHelper;
+use backend\models\Worker;
+
+ <?= $form->field($model, 'worker_id')->DropdownList(ArrayHelper::map(Worker::find()->all(),'id','url'),['prompt'=>'worker name']) ?>
+    
+ 
+'filter' => Html::activeDropDownList($searchModel, 'category',["4"=>'Radio Button'],['class'=>'form-control','prompt' => 'Select Category']),
+
+
+/*****PAGIGNATION USE IN MODEL ***/
+ $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+			'sort'=> ['defaultOrder' => ['id'=>SORT_DESC]],
+            'pagination' => [ 'pageSize' => 3 ],
+        ]);
+
+		['options' => ['enctype' => 'multipart/form-data','name'=>'upfile']]
+		
+		/**********MODIFY VIWE WITH CUSTOME VALUE in gride view********/
+		 [ 'format' => 'html', 'label' => 'disc','value'=>function ($data){  
+                     return '<h3>'.$data->rep_description.'</h3>';}  ],
+					
+					
+	               [ 'format' => 'html', 
+               'label' => 'disc',
+               'attribute'=>'rep_link', 
+               'filter'=>['1'=>'text','2'=>'jpg'], //with custome sarch
+               'value'=>function ($data){ return '<SMALL>'.$data->rep_description.'</SMALL>';} 
+             ],
+			 
+/************WITH IMAGE UPLOAD*******************/
+
+ 
+/////////////////////////////////////
+
+'id' => Yii::t('app', 'ID'),
