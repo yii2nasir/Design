@@ -1,0 +1,114 @@
+<html>
+<head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+.pointer{
+  cursor:pointer;
+}
+
+#right{
+  float:right;
+}
+</style>
+<script>
+var app = angular.module('myapp',[]);
+// app.controller('calcPriceController',function($scope){{
+
+// });
+</script>
+
+<script>
+var app = angular.module('prongbang',[]);
+app.controller('calcPriceController',function($scope){
+  
+  $scope.products = [];
+  $scope.total = 0; 
+  
+  $scope.sumPrice = function(products) {
+    var total = 0;
+    angular.forEach(products,function(value,index){
+      total += parseFloat(value.price);
+    }); 
+    return total.toFixed(2);
+  };
+  
+  $scope.removeItem = function(index){
+    /*$scope.products.slice(index,1);*/
+    $scope.products[index] = undefined;
+    $scope.products = $scope.select2product($scope.products); 
+    $scope.total = $scope.sumPrice($scope.products);
+  };
+  
+  $scope.select2product = function(products){
+    var product = [];
+    $scope.products = []; // clear data
+    angular.forEach(products,function(value,index){
+      if(value != undefined) product.push(value); 
+    });
+    return product;
+  };
+  
+  $scope.add = function(product){
+    $scope.products.push(product);
+    $scope.total = $scope.sumPrice($scope.products);
+    $scope.clearInput();
+  };
+  
+  $scope.clearInput = function(){
+    $scope.product = null;
+  };
+  
+});
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+<div ng-app="prongbang">
+  <div ng-controller="calcPriceController" class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>AngularJS Calculate Total Price</h2>
+        <br>
+        <form ng-submit="add(product)">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td ng-bind="products.length+1"></td>
+                <td><input ng-model="product.name" type="text" class="form-control" /></td>
+                <td><input ng-model="product.amount" type="text" class="form-control" /></td>
+                <td><input ng-model="product.price" type="text" class="form-control" required/></td>
+                <td><button class="btn" type="submit">Add</button></td>
+              </tr>
+              <tr ng-repeat="p in products">
+                <td ng-bind="$index+1"></td>
+                <td ng-bind="p.name"></td>
+                <td ng-bind="p.amount"></td>
+                <td ng-bind="p.price"></td>
+                <td>
+                  <span ng-click="removeItem($index)" class="pointer glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </td>
+              </tr> 
+              <tr>
+                <th colspan="4">Total</th>
+                <th id="right"><span ng-bind="total"></span><span> Baht.</span></th>
+              </tr> 
+            </tbody>
+          </table> 
+        </form> 
+        <div ng-bind="products | json"></div>
+      </div>
+    </div>
+  </div>
+</div>
